@@ -33,7 +33,7 @@ while running:
         elif event.type == pygame.K_PAGEUP:
             delta += 0.01
             delta2 += 0.01
-            map_request = f"http://static-maps.yandex.ru/1.x/?ll=37.530887,55.703118&spn={delta},{delta2}&l=map"
+            map_request = f"http://static-maps.yandex.ru/1.x/?ll={coord1},{coord2}&spn={delta},{delta2}&l=map"
             response = requests.get(map_request)
             if not response:
                 print("Ошибка выполнения запроса:")
@@ -47,7 +47,7 @@ while running:
         elif event.type == pygame.K_PAGEDOWN:
             delta -= 0.01
             delta2 -= 0.01
-            map_request = f"http://static-maps.yandex.ru/1.x/?ll=37.530887,55.703118&spn={delta},{delta2}&l=map"
+            map_request = f"http://static-maps.yandex.ru/1.x/?ll={coord1},{coord2}&spn={delta},{delta2}&l=map"
             response = requests.get(map_request)
             if not response:
                 print("Ошибка выполнения запроса:")
@@ -60,7 +60,7 @@ while running:
                 file.write(response.content)
         elif event.type == pygame.K_UP:
             coord1 += 0.02
-            map_request = f"http://static-maps.yandex.ru/1.x/?ll=37.530887,55.703118&spn={delta},{delta2}&l=map"
+            map_request = f"http://static-maps.yandex.ru/1.x/?ll={coord1},{coord2}&spn={delta},{delta2}&l=map"
             response = requests.get(map_request)
             if not response:
                 print("Ошибка выполнения запроса:")
@@ -73,7 +73,7 @@ while running:
                 file.write(response.content)
         elif event.type == pygame.K_DOWN:
             coord1 -= 0.02
-            map_request = f"http://static-maps.yandex.ru/1.x/?ll=37.530887,55.703118&spn={delta},{delta2}&l=map"
+            map_request = f"http://static-maps.yandex.ru/1.x/?ll={coord1},{coord2}&spn={delta},{delta2}&l=map"
             response = requests.get(map_request)
             if not response:
                 print("Ошибка выполнения запроса:")
@@ -86,7 +86,7 @@ while running:
                 file.write(response.content)
         elif event.type == pygame.K_RIGHT:
             coord2 += 0.002
-            map_request = f"http://static-maps.yandex.ru/1.x/?ll=37.530887,55.703118&spn={delta},{delta2}&l=map"
+            map_request = f"http://static-maps.yandex.ru/1.x/?ll={coord1},{coord2}&spn={delta},{delta2}&l=map"
             response = requests.get(map_request)
             if not response:
                 print("Ошибка выполнения запроса:")
@@ -99,7 +99,7 @@ while running:
                 file.write(response.content)
         elif event.type == pygame.K_LEFT:
             coord2 -= 0.02
-            map_request = f"http://static-maps.yandex.ru/1.x/?ll=37.530887,55.703118&spn={delta},{delta2}&l=map"
+            map_request = f"http://static-maps.yandex.ru/1.x/?ll={coord1},{coord2}&spn={delta},{delta2}&l=map"
             response = requests.get(map_request)
             if not response:
                 print("Ошибка выполнения запроса:")

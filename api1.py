@@ -9,7 +9,10 @@ delta = 0.002
 delta2 = 0.002
 coord1 = 37.530887
 coord2 = 55.703118
-map_request = f"http://static-maps.yandex.ru/1.x/?ll={coord1},{coord2}&spn={delta},{delta2}&l=map"
+map1 = 'map'
+map2 = 'sat'
+map3 = 'skl'
+map_request = f"http://static-maps.yandex.ru/1.x/?ll={coord1},{coord2}&spn={delta},{delta2}&l={map1}"
 response = requests.get(map_request)
 
 if not response:
@@ -100,6 +103,42 @@ while running:
         elif event.type == pygame.K_LEFT:
             coord2 -= 0.02
             map_request = f"http://static-maps.yandex.ru/1.x/?ll={coord1},{coord2}&spn={delta},{delta2}&l=map"
+            response = requests.get(map_request)
+            if not response:
+                print("Ошибка выполнения запроса:")
+                print(map_request)
+                print("Http статус:", response.status_code, "(", response.reason, ")")
+                sys.exit(1)
+
+            map_file = "map.png"
+            with open(map_file, "wb") as file:
+                file.write(response.content)
+        elif event.type == pygame.K_z:
+            map_request = f"http://static-maps.yandex.ru/1.x/?ll={coord1},{coord2}&spn={delta},{delta2}&l={map1}"
+            response = requests.get(map_request)
+            if not response:
+                print("Ошибка выполнения запроса:")
+                print(map_request)
+                print("Http статус:", response.status_code, "(", response.reason, ")")
+                sys.exit(1)
+
+            map_file = "map.png"
+            with open(map_file, "wb") as file:
+                file.write(response.content)
+        elif event.type == pygame.K_x:
+            map_request = f"http://static-maps.yandex.ru/1.x/?ll={coord1},{coord2}&spn={delta},{delta2}&l={map2}"
+            response = requests.get(map_request)
+            if not response:
+                print("Ошибка выполнения запроса:")
+                print(map_request)
+                print("Http статус:", response.status_code, "(", response.reason, ")")
+                sys.exit(1)
+
+            map_file = "map.png"
+            with open(map_file, "wb") as file:
+                file.write(response.content)
+        elif event.type == pygame.K_c:
+            map_request = f"http://static-maps.yandex.ru/1.x/?ll={coord1},{coord2}&spn={delta},{delta2}&l={map3}"
             response = requests.get(map_request)
             if not response:
                 print("Ошибка выполнения запроса:")
